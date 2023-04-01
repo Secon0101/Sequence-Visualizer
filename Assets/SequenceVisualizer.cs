@@ -35,10 +35,19 @@ public class SequenceVisualizer : MonoBehaviour
     /// <summary> 점화식 </summary>
     private static float RecurrenceRelation(int n) 
     {
-        // (4^(n+1) - 3^n) / (4^n - 3^n)
-        // return (Mathf.Pow(4f, n+1) - Mathf.Pow(3f, n)) / (Mathf.Pow(4f, n) - Mathf.Pow(3f, n));
+        // (4^(n+1) - 3^n+1) / (4^n - 3^n)
+        // return (Mathf.Pow(4f, n+1) - Mathf.Pow(3f, n+1)) / (Mathf.Pow(4f, n) - Mathf.Pow(3f, n));
+        
         // 5(-9/10)^n
-        return 5f * Mathf.Pow(-9f / 10f, n);
+        // return 5f * Mathf.Pow(-9f / 10f, n);
+        
+        // (r^n + r) / (r^(n+1) + 1)
+        // const float r = 1.5f;
+        // return (Mathf.Pow(r, n) + r) / (Mathf.Pow(r, n+1) + 1);
+        
+        // r^(n+1) / (1 + r^n)
+        const float r = 1.5f;
+        return Mathf.Pow(r, n+1) / (1f + Mathf.Pow(r, n));
     }
     
     public void StartSequence() // 시작 버튼 이벤트 
